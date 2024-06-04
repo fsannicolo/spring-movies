@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    <title>Filmografia</title>
+</head>
+<body>
+    <div>
+        <header class="my-2">
+            <h2>Filmografia</h2>
+            <a th:href="@{/films/new}" class="btn btn-success">Nuovo film</a>
+        </header>
+
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="col-2">Titolo</th>
+                    <th class="col-2">Genere</th>
+                    <th class="col-2">Anno</th>
+                    <th class="col-2">Voto</th>
+                    <th class="col-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="f : ${films}">
+                    <td th:text="${f.title}"></td>
+                    <td th:text="${f.genre}"></td>
+                    <td th:text="${f.year}"></td>
+                    <td th:text="${f.rating}"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <small th:if="${#lists.isEmpty(films)}">
+            Nessun film presente!
+        </small>
+    </div>
+</body>
+</html>
